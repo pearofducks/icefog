@@ -6,8 +6,12 @@ const createOutput = (input, outputFile) => ({
   output: {
     file: outputFile,
     format: 'esm',
+    sourcemap: true,
     plugins: [
-      getBabelOutputPlugin({ presets: [['@babel/preset-env', { targets: ['supports es6-module and last 2 versions and not dead'] }]] })
+      getBabelOutputPlugin({
+        presets: [['@babel/preset-env', { targets: ['supports es6-module and last 2 versions and not dead'] }]],
+        sourceMaps: true
+      })
     ]
   },
   external: ['./client.js']
