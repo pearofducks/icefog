@@ -1,11 +1,11 @@
-# env-cfg
+# icefog
 
 a utility for passing environment/config info from server to client
 
 ## install
 
 ```shell
-yarn add env-cfg
+yarn add icefog
 ```
 
 ## use
@@ -13,7 +13,7 @@ yarn add env-cfg
 On the server, create a config string:
 
 ```js
-import { createConfig } from 'env-cfg'
+import { createConfig } from 'icefog/server'
 
 const configString = createConfig({ isDev: true, token: 'abc' })
 // then add this string to your rendered markup
@@ -23,14 +23,20 @@ const configString = createConfig({ isDev: true, token: 'abc' })
 Then on the client, read the config string:
 
 ```js
-import { initConfig } from 'env-cfg'
-initConfig()
+import 'icefog/init' // for the default element of '#app'
+```
+
+or
+
+```js
+import { initConfig } from 'icefog'
+initConfig('my-dom-element')
 ```
 
 the `config` export is then available for use anywhere in your app:
 
 ```js
-import { config } from 'env-cfg'
+import { config } from 'icefog'
 
 if (config.isDev) // do development-specific things
 ```
