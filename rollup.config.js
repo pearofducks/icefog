@@ -9,7 +9,8 @@ const createOutput = (input, outputFile) => ({
     plugins: [
       getBabelOutputPlugin({ presets: [['@babel/preset-env', { targets: ['supports es6-module and last 2 versions and not dead'] }]] })
     ]
-  }
+  },
+  external: ['./client.js']
 })
 
 export default [
