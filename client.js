@@ -4,7 +4,7 @@ export function initConfig(elementId = 'app', { windowAttr = 'config' } = {}) {
   const appEl = document.getElementById(elementId)
   if (appEl?.dataset?.config) {
     config = JSON.parse(appEl.dataset.config)
-    appEl.dataset.config = undefined
+    appEl.dataset.config = ''
   } else console.warn(`icefog: unable to find data-config on #${elementId}`)
   if (config.isDev) window[windowAttr] = config
 }
