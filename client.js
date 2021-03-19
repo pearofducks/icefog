@@ -2,11 +2,13 @@ export let config = {}
 
 export function initConfig(elementId = 'app', { windowAttr = 'config' } = {}) {
   const appEl = document.getElementById(elementId)
-  if (appEl?.dataset?.config) {
+  try {
     config = JSON.parse(appEl.dataset.config)
     appEl.dataset.config = ''
-  } else console.warn(`icefog: unable to find data-config on #${elementId}`)
-  if (config.isDev) window[windowAttr] = config
+  } catch (err) {
+    console.warn(`icefog: unable to find data-config on #${elementId}`)
+  }
+  if (config.isDev) window[elementId === 'app' ? '' : `${elementId}-` + windowAttr] = config
 }
 
 export const setConfig = c => config = c
