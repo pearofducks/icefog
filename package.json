@@ -1,6 +1,6 @@
 {
   "name": "icefog",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "a utility for passing environment/config info from server to client",
   "module": "dist/client.js",
   "type": "module",
