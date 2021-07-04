@@ -13,24 +13,24 @@
   "scripts": {
     "types": "tsc",
     "test": "node test",
-    "preversion": "npm run build",
+    "build": "rollup -c",
+    "preversion": "npm run test && npm run types && npm run build",
     "version": "npm publish",
-    "postversion": "git push --follow-tags",
-    "build": "rollup -c"
+    "postversion": "git push --follow-tags"
   },
   "keywords": [],
   "author": "Dave Honneffer <pearofducks@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "serialize-javascript": "^5.0.1"
+    "serialize-javascript": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
     "@rollup/plugin-babel": "^5.2.1",
     "abdomen": "^1.0.0",
     "jsdom": "^16.6.0",
-    "rollup": "^2.33.1",
+    "rollup": "^2.52.7",
     "typescript": "^4.3.5",
     "uvu": "^0.5.1"
   },
