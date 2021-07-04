@@ -36,6 +36,7 @@
   },
   "files": [
     "dist/",
+    "types/",
     "server.mjs"
   ]
 }
