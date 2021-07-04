@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "strictNullChecks": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "types",
+    "removeComments": false
+  },
+  "files": [
+    "./client.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "types"
+  ]
+}
