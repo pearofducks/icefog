@@ -1,3 +1,5 @@
+import { decode } from './base64.js'
+
 /** @type {object} */
 export let config = {}
 
@@ -13,7 +15,7 @@ const getId = (element) => (element instanceof HTMLElement ? element : document.
  */
 export function getConfig(element) {
   const configEl = getConfigEl(element)
-  const _config = Object.freeze(JSON.parse(configEl.dataset.config))
+  const _config = Object.freeze(JSON.parse(decode(configEl.dataset.config)))
   configEl.removeAttribute('data-config')
   return _config
 }

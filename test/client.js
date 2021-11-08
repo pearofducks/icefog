@@ -1,10 +1,11 @@
 import 'abdomen/setup'
 import { initConfig, getConfig, config, setConfig } from '../client.js'
+import { encode } from '../base64.js'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 
 const Client = suite('Client')
-const configString = '{"foo":"a","bar":2,"baz":false,"isDev":true}'
+const configString = encode('{"foo":"a","bar":2,"baz":false,"isDev":true}')
 
 Client.before.each((ctx) => {
   const testContainer = document.createElement('div')
