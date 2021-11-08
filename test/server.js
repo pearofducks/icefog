@@ -1,4 +1,4 @@
-import { createConfig } from '../server.mjs'
+import { createConfig } from '../server.js'
 import { suite } from 'uvu'
 import { decode } from '../base64.js'
 import * as assert from 'uvu/assert'

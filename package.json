@@ -8,7 +8,7 @@
   "exports": {
     ".": "./dist/client.js",
     "./init": "./dist/initClient.js",
-    "./server": "./server.mjs"
+    "./server": "./server.js"
   },
   "scripts": {
     "types": "tsc",
@@ -37,6 +37,7 @@
   "files": [
     "dist/",
     "types/",
-    "server.mjs"
+    "base64.js",
+    "server.js"
   ]
 }
