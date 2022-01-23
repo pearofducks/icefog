@@ -9,7 +9,7 @@ const createOutput = (input, outputFile) => ({
     sourcemap: true,
     plugins: [
       getBabelOutputPlugin({
-        presets: [['@babel/preset-env', { targets: ['supports es6-module and last 2 versions and not dead'] }]],
+        presets: [['@babel/preset-env', { targets: ['supports es6-module and last 2 versions and not dead'], bugfixes: true }]],
         sourceMaps: true
       })
     ]

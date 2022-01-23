@@ -10,7 +10,8 @@
     "removeComments": false
   },
   "files": [
-    "./client.js"
+    "./client.js",
+    "./server.js"
   ],
   "exclude": [
     "node_modules",

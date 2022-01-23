@@ -12,6 +12,7 @@
   },
   "scripts": {
     "types": "tsc",
+    "posttypes": "mv ./types/server.d.ts .",
     "test": "node test",
     "build": "rollup -c",
     "preversion": "npm run test && npm run types && npm run build",
@@ -28,8 +29,8 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@rollup/plugin-babel": "^5.2.1",
-    "abdomen": "^1.0.0",
-    "jsdom": "^16.6.0",
+    "abdomen": "^1.0.1",
+    "jsdom": "^19.0.0",
     "rollup": "^2.52.7",
     "typescript": "^4.3.5",
     "uvu": "^0.5.1"
@@ -38,6 +39,7 @@
     "dist/",
     "types/",
     "base64.js",
-    "server.js"
+    "server.js",
+    "server.d.ts"
   ]
 }
