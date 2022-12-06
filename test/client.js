@@ -5,7 +5,7 @@ import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 
 const Client = suite('Client')
-const configString = encode('{"foo":"a","bar":2,"baz":false,"isDev":true}')
+const configString = encode('{"foo":"a","bar":2,"baz":false,"isDev":true,"_configId":"icefog-id"}')
 
 Client.before.each((ctx) => {
   const testContainer = document.createElement('div')
@@ -61,12 +61,21 @@ Client('setConfig assigns its argument to the config export', () => {
   assert.is(config.llama, 'wombat')
 })
 
-Client('when isDev is true on the config, window.configs will be set', () => {
+Client('window.configs will be set when an id is present', () => {
   assert.not.ok(window.configs)
   initConfig('#test-target')
   assert.ok(window.configs)
   assert.ok(window.configs.testTarget)
   assert.is(window.configs.testTarget.foo, 'a')
+})
+
+Client('window.configs will be set when a specific attribute is present on config', (ctx) => {
+  ctx.el.querySelector('[data-config]').removeAttribute('id')
+  assert.not.ok(window.configs)
+  initConfig('[data-config]')
+  assert.ok(window.configs)
+  assert.ok(window.configs.icefogId)
+  assert.is(window.configs.icefogId.foo, 'a')
 })
 
 Client.run()
