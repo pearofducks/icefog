@@ -7,11 +7,8 @@ const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase
 const camelcase = str => str.split('-').map((e, i) => i === 0 ? e.toLowerCase() : capitalize(e)).join('')
 const queryForElement = (elementQuery) => document.querySelector(elementQuery)
 const getConfigEl = (element) => element instanceof HTMLElement ? element : queryForElement(element)
-const getId = (element) => {
-  try {
-    return getConfigEl(element).getAttribute('id')
-  } catch (err) {}
-}
+// TODO: change this to optional-chaining in late 2023
+const getId = (element) => getConfigEl(element) && getConfigEl(element).getAttribute('id')
 
 /**
  * getConfig parses a data-config attribute on an html element
