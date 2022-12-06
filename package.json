@@ -26,14 +26,14 @@
     "serialize-javascript": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
-    "@rollup/plugin-babel": "^5.2.1",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.3",
     "abdomen": "^1.0.1",
-    "jsdom": "^19.0.0",
-    "rollup": "^2.52.7",
-    "typescript": "^4.3.5",
-    "uvu": "^0.5.1"
+    "jsdom": "^20.0.3",
+    "rollup": "^3.6.0",
+    "typescript": "^4.9.3",
+    "uvu": "^0.5.6"
   },
   "files": [
     "dist/",

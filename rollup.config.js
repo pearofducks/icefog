@@ -1,5 +1,5 @@
 import { getBabelOutputPlugin } from '@rollup/plugin-babel'
-import pkg from './package.json'
+import pkg from './package.json' assert { type: 'json' }
 
 const createOutput = (input, outputFile) => ({
   input,
