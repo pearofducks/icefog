@@ -5,12 +5,14 @@ import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 
 const Client = suite('Client')
-const configString = encode('{"foo":"a","bar":2,"baz":false,"isDev":true}')
+const _cfg = { foo: 'a', bar: 2, baz: false }
+const configString = encode(JSON.stringify(_cfg))
+const otherConfigString = encode(JSON.stringify({ ..._cfg, _id: 'my-config', foo: 'b' }))
 
 Client.before.each((ctx) => {
   const testContainer = document.createElement('div')
   document.body.append(testContainer)
-  testContainer.innerHTML = `<div id="test-target" data-config='${configString}'></div>`
+  testContainer.innerHTML = `<div id="test-target" data-config='${configString}'></div><article data-config='${otherConfigString}'></article>`
   ctx.el = testContainer
 })
 
@@ -61,12 +63,18 @@ Client('setConfig assigns its argument to the config export', () => {
   assert.is(config.llama, 'wombat')
 })
 
-Client('when isDev is true on the config, window.configs will be set', () => {
+Client('window.configs will be set when an id is available', () => {
   assert.not.ok(window.configs)
   initConfig('#test-target')
   assert.ok(window.configs)
+  assert.not.ok(window.configs.myConfig)
   assert.ok(window.configs.testTarget)
   assert.is(window.configs.testTarget.foo, 'a')
+
+  const otherElement = document.querySelector('article')
+  initConfig(otherElement)
+  assert.ok(window.configs.myConfig)
+  assert.is(window.configs.myConfig.foo, 'b')
 })
 
 Client.run()

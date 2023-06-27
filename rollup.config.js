@@ -1,5 +1,4 @@
 import { getBabelOutputPlugin } from '@rollup/plugin-babel'
-import pkg from './package.json'
 
 const createOutput = (input, outputFile) => ({
   input,
@@ -18,6 +17,6 @@ const createOutput = (input, outputFile) => ({
 })
 
 export default [
-  createOutput('./client.js', pkg.exports['.']),
-  createOutput('./initClient.js', pkg.exports['./init'])
+  createOutput('./client.js', './dist/client.js'),
+  createOutput('./initClient.js', './dist/initClient.js')
 ]

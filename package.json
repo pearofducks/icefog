@@ -1,21 +1,28 @@
 {
   "name": "icefog",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "a utility for passing environment/config info from server to client",
-  "module": "dist/client.js",
   "type": "module",
-  "types": "./types/client.d.ts",
+  "types": "./client.d.ts",
   "exports": {
-    ".": "./dist/client.js",
-    "./init": "./dist/initClient.js",
-    "./server": "./server.js"
+    ".": {
+      "types": "./client.d.ts",
+      "default": "./client.js"
+    },
+    "./init": "./initClient.js",
+    "./server": {
+      "types": "./server.d.ts",
+      "default": "./server.js"
+    },
+    "./client": {
+      "types": "./client.d.ts",
+      "default": "./client.js"
+    }
   },
   "scripts": {
-    "types": "tsc",
-    "posttypes": "mv ./types/server.d.ts .",
     "test": "node test",
     "build": "rollup -c",
-    "preversion": "npm run test && npm run types && npm run build",
+    "preversion": "npm run test && npm run build",
     "version": "npm publish",
     "postversion": "git push --follow-tags"
   },
@@ -23,23 +30,12 @@
   "author": "Dave Honneffer <pearofducks@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "serialize-javascript": "^6.0.0"
+    "serialize-javascript": "^6.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
-    "@rollup/plugin-babel": "^5.2.1",
     "abdomen": "^1.0.1",
-    "jsdom": "^19.0.0",
-    "rollup": "^2.52.7",
-    "typescript": "^4.3.5",
-    "uvu": "^0.5.1"
-  },
-  "files": [
-    "dist/",
-    "types/",
-    "base64.js",
-    "server.js",
-    "server.d.ts"
-  ]
+    "jsdom": "^22.1.0",
+    "uvu": "^0.5.6",
+    "vite": "^4.3.9"
+  }
 }

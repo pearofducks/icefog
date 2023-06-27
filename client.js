@@ -1,36 +1,27 @@
 import { decode } from './base64.js'
 
-/** @type {object} */
+/** @type {import('./client.d.ts').Config} */
 export let config = {}
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 const camelcase = str => str.split('-').map((e, i) => i === 0 ? e.toLowerCase() : capitalize(e)).join('')
 const getConfigEl = (element) => element instanceof HTMLElement ? element : document.querySelector(element)
-const getId = (element) => (element instanceof HTMLElement ? element : document.querySelector(element)).getAttribute('id')
 
-/**
- * getConfig parses a data-config attribute on an html element
- * @arg {string|HTMLElement} element
- * @returns {object}
- */
-export function getConfig(element) {
+/** @type {import('./client.d.ts').getConfig} */
+export function getConfig(element, { removeAttr = true } = {}) {
   const configEl = getConfigEl(element)
   const _config = Object.freeze(JSON.parse(decode(configEl.dataset.config)))
-  configEl.removeAttribute('data-config')
+  if (removeAttr) configEl.removeAttribute('data-config')
   return _config
 }
 
-/**
- * initConfig assigns the data found on the element to the config export
- * @arg {string|HTMLElement} element
- * @arg {object} options
- * @arg {string} options.windowAttr
- */
-export function initConfig(element = '#app', { windowAttr = 'configs' } = {}) {
+/** @type {import('./client.d.ts').initConfig} */
+export function initConfig(element = '#app', { windowAttr = 'configs', configId = '_id' } = {}) {
   try {
-    const id = getId(element)
-    config = getConfig(element)
-    if (config.isDev && id) {
+    const el = getConfigEl(element)
+    config = getConfig(el)
+    const id = el.getAttribute('id') || config[configId]
+    if (id) {
       if (!window[windowAttr]) window[windowAttr] = {}
       window[windowAttr][camelcase(id)] = config
     }
@@ -39,5 +30,5 @@ export function initConfig(element = '#app', { windowAttr = 'configs' } = {}) {
   }
 }
 
-/** @type {(config: object) => void} */
-export const setConfig = c => config = c
+/** @type {import('./client.d.ts').setConfig} */
+export const setConfig = c => config = Object.freeze(c)
