@@ -1,5 +1,5 @@
 import 'abdomen/setup'
-import { initConfig, getConfig, config, setConfig } from '../client.js'
+import { initConfig, getConfig, config as configExport, setConfig, useConfig } from '../client.js'
 import { encode } from '../base64.js'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
@@ -19,6 +19,7 @@ Client.before.each((ctx) => {
 Client.after.each((ctx) => {
   ctx.el.remove()
   delete window.configs
+  setConfig({})
 })
 
 Client('getConfig gets config from a selector', () => {
@@ -49,18 +50,29 @@ Client('getConfig returns an immutable object', () => {
   assert.throws(tryToSetValue)
 })
 
-Client('initConfig assigns getConfig to the config export', () => {
-  assert.is.not(config.foo, 'a')
+Client('useConfig returns the config object', () => {
   initConfig('#test-target')
+  /** @type {{ foo: 'a', bar: 2, baz: false }} */
+  const config = useConfig()
+  const tryToSetValue = () => { config.foo = 'bar' }
+  assert.throws(tryToSetValue)
   assert.is(config.foo, 'a')
+  assert.is(config.bar, 2)
+  assert.is(config.baz, false)
+})
+
+Client('initConfig assigns getConfig to the config export', () => {
+  assert.is.not(configExport.foo, 'a')
+  initConfig('#test-target')
+  assert.is(configExport.foo, 'a')
 })
 
 Client('setConfig assigns its argument to the config export', () => {
   initConfig('#test-target')
-  assert.is(config.foo, 'a')
+  assert.is(configExport.foo, 'a')
   setConfig({ llama: 'wombat' })
-  assert.is.not(config.foo, 'a')
-  assert.is(config.llama, 'wombat')
+  assert.is.not(configExport.foo, 'a')
+  assert.is(configExport.llama, 'wombat')
 })
 
 Client('window.configs will be set when an id is available', () => {

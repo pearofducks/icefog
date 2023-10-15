@@ -21,10 +21,10 @@
   },
   "scripts": {
     "test": "node test",
-    "build": "rollup -c",
-    "preversion": "npm run test && npm run build",
+    "preversion": "npm run test",
     "version": "npm publish",
-    "postversion": "git push --follow-tags"
+    "postversion": "git push --follow-tags",
+    "lint": "eslint --fix ."
   },
   "keywords": [],
   "author": "Dave Honneffer <pearofducks@gmail.com>",
@@ -33,9 +33,10 @@
     "serialize-javascript": "^6.0.1"
   },
   "devDependencies": {
+    "@itsy/lint": "^1.0.2",
     "abdomen": "^1.0.1",
+    "eslint": "^8.51.0",
     "jsdom": "^22.1.0",
-    "uvu": "^0.5.6",
-    "vite": "^4.3.9"
+    "uvu": "^0.5.6"
   }
 }

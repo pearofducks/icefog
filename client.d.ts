@@ -30,5 +30,12 @@ export function initConfig(element?: string | HTMLElement, options?: InitConfigO
 /** @type {object} */
 export let config: Config;
 
+/**
+ * @function
+ * @template T
+ * @returns {T}
+ */
+export function useConfig<T>(): T
+
 /** @type {(config: object) => void} */
 export const setConfig: (config: _Config) => void;

@@ -2,6 +2,8 @@ import { decode } from './base64.js'
 
 /** @type {import('./client.d.ts').Config} */
 export let config = {}
+/** @type {import('./client.d.ts').UseConfig} */
+export const useConfig = () => config
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 const camelcase = str => str.split('-').map((e, i) => i === 0 ? e.toLowerCase() : capitalize(e)).join('')
