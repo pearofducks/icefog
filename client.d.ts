@@ -1,31 +1,24 @@
 type _Config = Record<string, unknown>
 export type Config = Readonly<_Config>
 
-interface GetConfigOptions {
-  removeAttr: boolean;
-}
 interface InitConfigOptions {
-  windowAttr: string;
-  configId: string;
+  windowAttr?: string;
+  configId?: string;
 }
 
 /**
  * getConfig parses a data-config attribute on an html element
- * @arg {HTMLElement} element - the query-string or element to parse config from
- * @arg {object} options
- * @arg {boolean} options.removeAttr
+ * @arg {Element} element - the element to parse config from
  * @returns {object} - the config
  */
-export function getConfig(element: HTMLElement, options?: GetConfigOptions): Config;
+export function getConfig<T>(element: Element): T;
 
 /**
  * initConfig assigns the data found on the element to the config export
- * @arg {string|HTMLElement} element
- * @arg {object} options
- * @arg {string} options.windowAttr
- * @arg {string} options.configId
+ * @arg {string | Element} element
+ * @arg {InitConfigOptions} options
  */
-export function initConfig(element?: string | HTMLElement, options?: InitConfigOptions): void;
+export function initConfig(element?: string | Element, options?: InitConfigOptions): void;
 
 /** @type {object} */
 export let config: Config;

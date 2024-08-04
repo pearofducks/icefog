@@ -2,18 +2,18 @@ import { decode } from './base64.js'
 
 /** @type {import('./client.d.ts').Config} */
 export let config = {}
+
 /** @type {import('./client.d.ts').UseConfig} */
 export const useConfig = () => config
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 const camelcase = str => str.split('-').map((e, i) => i === 0 ? e.toLowerCase() : capitalize(e)).join('')
-const getConfigEl = (element) => element instanceof HTMLElement ? element : document.querySelector(element)
+const getConfigEl = (element) => element instanceof Element ? element : document.querySelector(element)
 
 /** @type {import('./client.d.ts').getConfig} */
-export function getConfig(element, { removeAttr = true } = {}) {
-  const configEl = getConfigEl(element)
-  const _config = Object.freeze(JSON.parse(decode(configEl.dataset.config)))
-  if (removeAttr) configEl.removeAttribute('data-config')
+export function getConfig(element) {
+  const _config = Object.freeze(JSON.parse(decode(element.dataset.config)))
+  delete element.dataset.config
   return _config
 }
 

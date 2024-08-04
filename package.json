@@ -1,6 +1,6 @@
 {
   "name": "icefog",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "a utility for passing environment/config info from server to client",
   "type": "module",
   "types": "./client.d.ts",
@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "test": "node test",
+    "test": "node --test test",
     "preversion": "npm run test",
     "version": "npm publish",
     "postversion": "git push --follow-tags",
@@ -30,13 +30,13 @@
   "author": "Dave Honneffer <pearofducks@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "serialize-javascript": "^6.0.1"
+    "serialize-javascript": "^6.0.2"
   },
   "devDependencies": {
-    "@itsy/lint": "^1.0.2",
-    "abdomen": "^1.0.1",
-    "eslint": "^8.51.0",
-    "jsdom": "^22.1.0",
+    "@happy-dom/global-registrator": "^14.12.3",
+    "@itsy/lint": "^1.0.16",
+    "eslint": "^9.8.0",
+    "happy-dom": "^14.12.3",
     "uvu": "^0.5.6"
   }
 }
