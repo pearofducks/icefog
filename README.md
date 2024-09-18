@@ -41,13 +41,15 @@ import { config } from 'icefog'
 if (config.isDev) // do development-specific things
 ```
 
-## api
+## server api
 
 ### createConfig
 
 `createConfig(config: object): string`
 
 Creates a base64-encoded, stringified version of the object provided.
+
+## client api
 
 ### initConifg
 
