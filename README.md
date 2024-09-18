@@ -56,6 +56,8 @@ Creates a base64-encoded, stringified version of the object provided.
 `initConfig(element: (Element | string) = '#app', { windowAttr: string = 'configs', configId: string = '_id' })`
 
 - `element` is the DOM element you render the configString onto and can be either an Element or a _querySelector_
+- `windowAttr` is the attribute on `window` that a _frozen_ copy of the config will be placed on for reference
+- `configId` defines the config attribute that will be used when `element` does not have an `id`
 
 ### config
 
