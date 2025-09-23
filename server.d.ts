@@ -1,5 +1,10 @@
 type _Config = Record<string, unknown>
 
+interface Options {
+  /** Will return the raw config-string when true */
+  raw?: boolean;
+}
+
 /**
  * createConfig makes a DOM-ready string from an object
  * @arg {object} config - the object to stringify
@@ -10,4 +15,4 @@ type _Config = Record<string, unknown>
  * const html = `<div id="app" ${createConfig(cfg)}></div>`
  * ```
  */
-export function createConfig(config: _Config): string;
+export function createConfig(config: _Config, options: Options): string
