@@ -1,5 +1,5 @@
 import { GlobalRegistrator } from '@happy-dom/global-registrator'
-import { initConfig, getConfig, config as configExport, setConfig, useConfig } from '../client.js'
+import { initConfig, getConfig, config as configExport, setConfig, useConfig, getConfigFromString } from '../client.js'
 import { encode } from '../base64.js'
 import { describe, it, before, after, beforeEach, afterEach } from 'node:test'
 import * as assert from 'node:assert/strict'
@@ -93,5 +93,14 @@ describe('other methods', () => {
     initConfig(otherElement)
     assert.ok(window.configs.myConfig)
     assert.equal(window.configs.myConfig.foo, 'b')
+  })
+})
+
+describe('getConfigFromString', () => {
+  it('parses config from a string', () => {
+    const cfg = getConfigFromString(configString)
+    assert.equal(cfg.foo, 'a')
+    assert.equal(cfg.bar, 2)
+    assert.equal(cfg.baz, false)
   })
 })
