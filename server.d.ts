@@ -15,4 +15,4 @@ interface Options {
  * const html = `<div id="app" ${createConfig(cfg)}></div>`
  * ```
  */
-export function createConfig(config: _Config, options: Options): string
+export function createConfig(config: _Config, options?: Options): string
