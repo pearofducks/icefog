@@ -17,6 +17,10 @@
     "./client": {
       "types": "./client.d.ts",
       "default": "./client.js"
+    },
+    "./wc": {
+      "types": "./wc.d.ts",
+      "default": "./wc.js"
     }
   },
   "scripts": {
