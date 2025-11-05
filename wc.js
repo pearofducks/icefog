@@ -7,11 +7,15 @@ export function createComponentBase({ contextKey, ExtendedClass }) {
   class ConfigurableComponentRoot extends ExtendedClass {
     static properties = {
       initConfig: { type: String, attribute: 'init-config' },
-      config: { attribute: false, state: true },
+      _config: { attribute: false, state: true },
+    }
+
+    get config() {
+      return this._config
     }
 
     set config(value) {
-      this.config = value
+      this._config = value
       this._provider.setValue(value)
     }
 
