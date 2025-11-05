@@ -34,13 +34,13 @@
   "author": "Dave Honneffer <pearofducks@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "serialize-javascript": "^6.0.2"
+    "serialize-javascript": "^7.0.0"
   },
   "devDependencies": {
-    "@happy-dom/global-registrator": "^18.0.1",
+    "@happy-dom/global-registrator": "^20.0.10",
     "@itsy/lint": "^1.1.0",
-    "eslint": "^9.36.0",
-    "happy-dom": "^18.0.1",
+    "eslint": "^9.39.1",
+    "happy-dom": "^20.0.10",
     "uvu": "^0.5.6"
   }
 }
